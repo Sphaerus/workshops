@@ -3,4 +3,9 @@ Rails.application.routes.draw do
   resources :students do
     get :subjects
   end
+
+  resources :teachers
+  resources :reports
+  root to: "students#index"
+  get "report/subjects", to: "reports#subjects"
 end
