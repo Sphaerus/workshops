@@ -14,7 +14,11 @@ class TeachersController < ApplicationController
 
   def update
     if teacher.save
-      redirect_to teacher_path(teacher), notice: I18n.t('shared.updated', resource: 'Teacher')
+      if !teacher.subject_items.empty?
+        redirect_to report_subjects_path, notice: teacher_updated
+      else
+        redirect_to teacher_path(teacher), notice: teacher_updated
+      end
     else
       render :edit
     end
@@ -29,5 +33,9 @@ class TeachersController < ApplicationController
 
   def teacher_params
     params.require(:teacher).permit(:first_name, :last_name, :academic_title, subject_item_ids: [])
+  end
+
+  def teacher_updated
+    I18n.t('shared.updated', resource: 'Teacher')
   end
 end
