@@ -2,7 +2,7 @@ class TeachersController < ApplicationController
   before_action :authenticate_user!
   expose(:teachers)
   expose(:teacher, attributes: :teacher_params)
-  expose(:subject_items) { teacher.subject_items }
+  expose(:teacher_subject_items) { teacher.subject_items }
 
   def create
     if teacher.save
@@ -27,6 +27,10 @@ class TeachersController < ApplicationController
   def destroy
     teacher.destroy
     redirect_to teachers_path, notice: I18n.t('shared.deleted', resource: 'Teacher')
+  end
+
+  def subjects
+
   end
 
   private

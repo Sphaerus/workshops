@@ -26,7 +26,7 @@ crumb :teacher do |teacher|
 end
 
 crumb :teacher_subjects do |teacher|
-  link "#{teacher.first_name} #{teacher.last_name} #{t('shared.subjects')}", teacher_subjects_path(teacher)
+  link "#{teacher.first_name} #{teacher.last_name} #{t('shared.subjects')}", subjects_teacher_path(teacher)
   parent :teachers
 end
 
