@@ -1,0 +1,8 @@
+- breadcrumb :teacher_subjects, teacher
+%table.table.table-condensed
+  %thead
+    %tr
+      %th= t('subject_item.columns.title')
+  %tbody
+    - teacher.subject_items.each do |subject_item|
+      = render "subject_item", subject_item: subject_item
