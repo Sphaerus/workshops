@@ -1,6 +1,11 @@
 class StudentsController < ApplicationController
+  before_action :authenticate_user!
   expose(:student, attributes: :student_params)
   expose(:student_subject_items) { student.subject_items }
+
+  def index
+    @students = Student.all
+  end
 
   def create
     if student.save
@@ -12,7 +17,11 @@ class StudentsController < ApplicationController
 
   def update
     if student.save
-      redirect_to student_path(student), notice: I18n.t('shared.updated', resource: 'Student')
+      if !student.subject_items.empty?
+        redirect_to report_subjects_path, notice: student_updated
+      else
+        redirect_to student_path(student), notice: student_updated
+      end
     else
       render :edit
     end
@@ -21,5 +30,15 @@ class StudentsController < ApplicationController
   def destroy
     student.destroy
     redirect_to students_path, notice: I18n.t('shared.deleted', resource: 'Student')
+  end
+
+  private
+
+  def student_params
+    params.require(:student).permit(:first_name, :last_name, subject_item_ids: [])
+  end
+
+  def student_updated
+    I18n.t('shared.updated', resource: 'Student')
   end
 end
