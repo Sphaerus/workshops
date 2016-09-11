@@ -8,6 +8,6 @@ module StudentsHelper
 	end
 
 	def sorted_payments(payments)
-		return payments.sort_by { |payment| payment.payment_date }
+		return payments.sort_by { |payment| payment.payment_date }.reverse
 	end
 end

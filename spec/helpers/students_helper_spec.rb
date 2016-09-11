@@ -20,7 +20,7 @@ describe StudentsHelper do
   describe '#sorted_payments' do
   	it 'for list of payments' do 
 		payments = [payment1, payment2, payment3]
-		expected = payments.sort_by { |payment| payment.payment_date }
+		expected = payments.sort_by { |payment| payment.payment_date }.reverse
 
 		expect(helper.sorted_payments(payments)).to eq expected
 	end  	
