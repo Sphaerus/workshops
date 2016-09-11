@@ -3,7 +3,7 @@
 
 - student_payments_by_year.each do |year, payments|
   %h3= year
-  - payments.each do |payment|
+  - sorted_payments(payments).each do |payment|
     %tr
       %br
       = payment.decorate.month

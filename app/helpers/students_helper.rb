@@ -6,4 +6,8 @@ module StudentsHelper
 	def eight_y_ago
 		Time.now.year - 8
 	end
+
+	def sorted_payments(payments)
+		return payments.sort_by { |payment| payment.payment_date }
+	end
 end
