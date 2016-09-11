@@ -1,10 +1,10 @@
 class StudentsController < ApplicationController
   before_action :authenticate_user!
+  expose(:students)
   expose(:student, attributes: :student_params)
   expose(:student_subject_items) { student.subject_items }
 
   def index
-    @students = Student.all
   end
 
   def create

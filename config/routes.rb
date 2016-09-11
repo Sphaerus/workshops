@@ -13,4 +13,6 @@ Rails.application.routes.draw do
   end
 
   get "report/subjects", to: "reports#subjects"
+
+  resources :payments
 end
