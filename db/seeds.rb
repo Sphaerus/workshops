@@ -22,11 +22,18 @@ end
 25.times do
   Student.create!(
     first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name
+    last_name: Faker::Name.last_name,
+    birthday: rand(90.years).seconds.ago
   )
 end
 
 students = Student.all
+students.each do |student|
+  rand(0..10).times do
+    student.payments.create(payment_date: rand(1.year).seconds.ago)
+  end
+end
+
 SubjectItem.all.each do |subject_item|
   subject_item.students << students.sample(rand(1..4))
 end
