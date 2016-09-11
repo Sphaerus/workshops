@@ -1,5 +1,4 @@
 ![alt tag](https://travis-ci.org/Sphaerus/workshops.svg?branch=additional_task)
-Try it Yourself »
 RoR Workshops
 ================
 
