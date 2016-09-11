@@ -1,3 +1,4 @@
+![alt tag](https://travis-ci.org/Sphaerus/workshops.svg?branch=additional_task)
 RoR Workshops
 ================
 

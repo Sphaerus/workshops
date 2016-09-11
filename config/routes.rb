@@ -3,14 +3,17 @@ Rails.application.routes.draw do
   root to: "visitors#index"
 
   resources :students do
-    get :subjects
+    get :subjects, on: :member
+    get :payments, on: :member
   end
 
   resources :visitors, only: :index
 
   resources :teachers do
-  	get 'subjects', on: :member
+  	get :subjects, on: :member
   end
 
   get "report/subjects", to: "reports#subjects"
+
+  resources :payments, only: [:index]
 end

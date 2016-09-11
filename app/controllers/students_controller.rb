@@ -1,10 +1,11 @@
 class StudentsController < ApplicationController
   before_action :authenticate_user!
+  expose(:students)
   expose(:student, attributes: :student_params)
   expose(:student_subject_items) { student.subject_items }
+  expose(:student_payments_by_year) { student.payments_by_year}
 
   def index
-    @students = Student.all
   end
 
   def create
@@ -32,10 +33,16 @@ class StudentsController < ApplicationController
     redirect_to students_path, notice: I18n.t('shared.deleted', resource: 'Student')
   end
 
+  def subjects
+  end
+
+  def payments
+  end
+
   private
 
   def student_params
-    params.require(:student).permit(:first_name, :last_name, subject_item_ids: [])
+    params.require(:student).permit(:first_name, :last_name, :birthday, subject_item_ids: [])
   end
 
   def student_updated

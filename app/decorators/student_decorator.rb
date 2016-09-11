@@ -9,6 +9,11 @@ class StudentDecorator < BaseDecorator
   	"%0.2f" % average_note(subject_item_notes)
   end
 
+  def formatted_birthday
+  	return "" if birthday.blank?
+  	birthday.strftime("%Y-%m_%d")
+  end
+
   private
 
   def average_note(subject_item_notes)

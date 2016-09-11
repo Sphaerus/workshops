@@ -7,6 +7,7 @@ en:
     logout: Logout
     signin: Sign in
     signup: Sign up
+    payments: Payments
   shared:
     created: "%{resource} has been created!"
     updated: "%{resource} has been updated!"
@@ -19,10 +20,11 @@ en:
     back: Back
     add_new_item: Add new one
     subjects: subjects
+    payments: payments
   student:
     columns:
       first_name: first name
-      last_name: last name
+      last_name: last name  
   teacher:
     columns:
       first_name: first name
@@ -32,3 +34,5 @@ en:
     columns:
       full_name: Full name
       avg_notes: Notes avarange
+  payments:
+    tuition_status: tuition status      
