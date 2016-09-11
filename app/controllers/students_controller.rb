@@ -3,6 +3,7 @@ class StudentsController < ApplicationController
   expose(:students)
   expose(:student, attributes: :student_params)
   expose(:student_subject_items) { student.subject_items }
+  expose(:student_payments_by_year) { student.payments_by_year}
 
   def index
   end
@@ -30,6 +31,12 @@ class StudentsController < ApplicationController
   def destroy
     student.destroy
     redirect_to students_path, notice: I18n.t('shared.deleted', resource: 'Student')
+  end
+
+  def subjects
+  end
+
+  def payments
   end
 
   private

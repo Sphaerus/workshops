@@ -31,6 +31,20 @@ RSpec.describe StudentsController do
     it_behaves_like 'template rendering action', :new
   end
 
+  describe 'GET #subjects' do
+    let(:student) { create :student }
+    subject { get :subjects, id: student }
+
+    it_behaves_like 'template rendering action', :subjects
+  end
+
+  describe 'GET #payments' do
+    let(:student) { create :student }
+    subject { get :payments, id: student }
+
+    it_behaves_like 'template rendering action', :payments
+  end
+
   describe 'POST #create' do
     let!(:params) { { student: build(:student).attributes } }
     subject { post :create, params }

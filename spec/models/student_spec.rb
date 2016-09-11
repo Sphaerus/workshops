@@ -5,7 +5,7 @@ RSpec.describe Student do
   let!(:student2) { create :student, first_name: 'Peter', last_name: 'Parker' }
   let!(:payment) { create :payment, student: student, payment_date: Date.new(2016,9,1) }
   let!(:payment2) { create :payment, student: student, payment_date: Date.new(2016,8,1) }
-  let!(:payment3) { create :payment, student: student, payment_date: Date.new(2016,7,1) }
+  let!(:payment3) { create :payment, student: student, payment_date: Date.new(2015,7,1) }
 
   describe 'validations' do
     it { is_expected.to validate_presence_of :first_name }
@@ -41,6 +41,15 @@ RSpec.describe Student do
       subject { student2.paid_this_month? }
 
       it { is_expected.to eq false}
+    end
+  end
+
+  describe '#payments_by_year' do
+    subject { student.payments_by_year }
+    it 'returns hash of payments with years as keys' do
+      expected = { 2016 => [payment, payment2], 2015 => [payment3] }
+
+      is_expected.to eq expected
     end
   end
 end

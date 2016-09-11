@@ -11,4 +11,8 @@ class Student < ActiveRecord::Base
   def paid_this_month?
   	payments.any? { |payment| payment.payment_date.month == Time.now.month && payment.payment_date.year == Time.now.year }
   end
+
+  def payments_by_year
+  	payments.group_by { |payment| payment.payment_date.year }
+  end
 end

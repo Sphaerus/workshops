@@ -3,6 +3,6 @@
   %td= student.last_name
   %td= current_status(student.paid_this_month?)
   %td
-    = link_to student_path(student), { title: t('shared.show') } do
+    = link_to payments_student_path(student), { title: t('shared.show') } do
       %button.btn.btn-default
         = fa_icon "search"

@@ -12,7 +12,7 @@ crumb :student do |student|
 end
 
 crumb :student_subjects do |student|
-  link "#{student.first_name} #{student.last_name} #{t('shared.subjects')}", student_subjects_path(student)
+  link "#{student.first_name} #{student.last_name} #{t('shared.subjects')}", subjects_student_path(student)
   parent :students
 end
 
@@ -36,4 +36,9 @@ end
 
 crumb :payments do 
   link t('navbar.payments'), payments_path
+end
+
+crumb :student_payments do
+  link "#{student.first_name} #{student.last_name} #{t('shared.payments')}", subjects_student_path(student)
+  parent :students
 end

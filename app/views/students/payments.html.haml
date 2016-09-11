@@ -1,0 +1,13 @@
+- breadcrumb :student_payments, student
+= student.decorate.full_name
+
+- student_payments_by_year.each do |year, payments|
+  %h3= year
+  - payments.each do |payment|
+    %tr
+      %br
+      = payment.decorate.month
+      = " : "
+      = payment.payment_date
+
+= link_to t('shared.back'), payments_path, class: 'btn btn-default'
