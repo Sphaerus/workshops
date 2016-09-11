@@ -4,7 +4,6 @@ feature 'User checks student payments' do
   let!(:student) { create :student, first_name: 'Jan', last_name: 'Nowak' }
   let!(:payment) { create :payment, student: student, payment_date: Date.new(2016, 1, 2) }
 
-
   background do
     sign_in
     expect(page).to have_content 'Logout'
