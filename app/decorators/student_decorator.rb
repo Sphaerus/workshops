@@ -4,7 +4,7 @@ class StudentDecorator < BaseDecorator
   end
 
   def avg_notes(subject_item)
-  	subject_item_notes = subject_item.subject_item_notes
+  	subject_item_notes = self.subject_item_notes.where(subject_item_id: subject_item.id)
   	return "0.00" if subject_item_notes.empty?
   	"%0.2f" % average_note(subject_item_notes)
   end
