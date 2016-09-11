@@ -7,8 +7,6 @@ Rails.application.routes.draw do
     get :payments, on: :member
   end
 
-  resources :visitors, only: :index
-
   resources :teachers do
   	get :subjects, on: :member
   end
